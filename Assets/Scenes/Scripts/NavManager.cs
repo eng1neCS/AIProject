@@ -12,6 +12,7 @@ public class NavManager : MonoBehaviour
     [SerializeField] float viewAngle = 80f;
     [SerializeField] float patrolSpeed = 3.5f;
     public Transform[] patrolPoints;
+    private bool chasingPlayer = false;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -40,22 +41,38 @@ public class NavManager : MonoBehaviour
         Debug.DrawLine(transform.position, transform.position + (rightside * sightRange), Color.red);
         Debug.DrawLine(transform.position, transform.position + (leftside * sightRange), Color.red);
         RaycastHit hit;
+
+
         if (Physics.Raycast(transform.position, player.position-transform.position, out hit, sightRange))
         {
             if(hit.transform == player)
             {
                 if(Vector3.Dot(player.position - transform.position, transform.forward)
-                    >= Mathf.Cos(viewAngle)){
+                    >= Mathf.Cos(viewAngle))
+                {
+                    chasingPlayer = true;
                     agent.SetDestination(player.position);
                     Debug.Log("Player in sight");
                 }
             }
             else
             {
-                Patrol();
+                if (chasingPlayer)
+                {
+                    chasingPlayer = false;
+                    agent.speed = patrolSpeed;
+                    agent.SetDestination(patrolPoints[currentPatrolIndex].position);
+                }
+                
             }
         }
+        else
+        {
+            Patrol();
+        }
     }
+
+
     void Patrol()
     {
         if (patrolPoints.Length == 0) return;
