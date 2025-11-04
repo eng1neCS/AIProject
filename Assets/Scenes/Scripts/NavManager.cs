@@ -15,6 +15,16 @@ public class NavManager : MonoBehaviour
     private bool chasingPlayer = false;
 
 
+    enum State
+    {
+        Patrolling,
+        Chasing,
+        Searching,
+        Attacking,
+        Dying,
+        Dead
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -79,7 +89,7 @@ public class NavManager : MonoBehaviour
 
         if (!agent.pathPending && agent.remainingDistance < 0.5f)
         {
-            currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length;
+            currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length;     
             agent.SetDestination(patrolPoints[currentPatrolIndex].position);
         }
     }
