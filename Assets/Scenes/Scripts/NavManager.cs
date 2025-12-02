@@ -8,8 +8,8 @@ public class NavManager : MonoBehaviour
     private UnityEngine.AI.NavMeshAgent agent;
     private int currentPatrolIndex;
 
-    [SerializeField] float sightRange = 10f;
-    [SerializeField] float viewAngle = 80f;
+    [SerializeField] float sightRange = 15f;
+    [SerializeField] float viewAngle = 45f;
     [SerializeField] float patrolSpeed = 3.5f;
     public Transform[] patrolPoints;
     private bool chasingPlayer = false;
