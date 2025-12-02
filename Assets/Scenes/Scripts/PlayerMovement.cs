@@ -3,22 +3,27 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+   [SerializeField] public float moveSpeed = 5f;
 
+    private Rigidbody rb;
+    private Vector3 moveDir;
 
-    [SerializeField] private float speed = 5f;
-    
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Input.GetAxis("Horizontal");
-        Input.GetAxis("Vertical");
-        GetComponent <Rigidbody>();
+        rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-       
+        float xInput = Input.GetAxisRaw("Horizontal");
+        float yInput = Input.GetAxisRaw("Vertical");
+
+        moveDir = new Vector3(xInput, 0f, yInput).normalized;
+    }
+
+    void FixedUpdate()
+    {
+        rb.MovePosition(rb.position + moveDir * moveSpeed * Time.fixedDeltaTime);
     }
 }
+
