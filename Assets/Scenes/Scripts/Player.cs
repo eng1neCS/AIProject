@@ -30,17 +30,9 @@ public class Player : MonoBehaviour
 
     void MovePlayer()
     {
-        Vector3 movement = (transform.right * moveHorizontal + transform.forward * moveForward).normalized;
-        Vector3 targetVelocity = movement * MoveSpeed;
+        Vector3 movement = new Vector3(moveHorizontal ,0, moveForward).normalized * MoveSpeed;
 
-        Vector3 velocity = rb.linearVelocity;
-        velocity.x = targetVelocity.x;
-        velocity.z = targetVelocity.z;
-        rb.linearVelocity = velocity;
-
-        if (moveHorizontal == 0 && moveForward == 0)
-        {
-            rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, 0);
-        }
+        movement.y = rb.linearVelocity.y; // Preserve vertical velocity (e.g., gravity)
+        rb.linearVelocity = movement;
     }
 }

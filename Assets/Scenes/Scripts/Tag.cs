@@ -6,24 +6,25 @@ using UnityEngine.SceneManagement;
 public class Tag : MonoBehaviour
 {
 
-    [SerializeField] private float tagDistance = 5f;
+    [SerializeField] private float tagDistance = 10f;
 
-    Transform player;
+    Transform Player;
 
     void Start()
     {
-        player = GameObject.FindWithTag("Player").transform;
+        Player = GameObject.FindWithTag("Player").transform;
     }
 
     private void FixedUpdate()
     {
-        if (player != null) {
+        if (Player != null) {
             return;
         }
-        if (Vector3.Distance(player.position, transform.position ) < tagDistance)
+
+        if (Vector3.Distance(Player.position, transform.position ) < tagDistance)
         {
 
-            Debug.Log("tagged!");
+            Debug.Log("tagged!"); 
             SceneManager.LoadScene("GetTaggedScene");
 
         }
