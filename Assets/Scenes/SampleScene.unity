@@ -636,8 +636,8 @@ GameObject:
   - component: {fileID: 489823761}
   - component: {fileID: 489823762}
   m_Layer: 0
-  m_Name: Target
-  m_TagString: Untagged
+  m_Name: Player
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -809,8 +809,9 @@ GameObject:
   - component: {fileID: 597719233}
   - component: {fileID: 597719232}
   - component: {fileID: 597719236}
+  - component: {fileID: 597719237}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Tagger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -829,7 +830,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 711127129}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!195 &597719232
 NavMeshAgent:
@@ -901,7 +902,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 71281400d171c354ea7e781581d0af9c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -952,6 +953,19 @@ MonoBehaviour:
   - {fileID: 1432075510}
   - {fileID: 1176914240}
   - {fileID: 1324325765}
+--- !u!114 &597719237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597719230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43bb64a1d67ac414581f8b13aa565280, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Tag
+  tagDistance: 5
 --- !u!1 &711127128
 GameObject:
   m_ObjectHideFlags: 0
@@ -989,6 +1003,7 @@ Transform:
   - {fileID: 1556845105}
   - {fileID: 312628183}
   - {fileID: 871180536}
+  - {fileID: 597719231}
   - {fileID: 489823755}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1908,4 +1923,3 @@ SceneRoots:
   - {fileID: 832575519}
   - {fileID: 711127129}
   - {fileID: 1440465103}
-  - {fileID: 597719231}
